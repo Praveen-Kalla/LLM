@@ -11,11 +11,9 @@ Example:
 
 from __future__ import annotations
 
-import os
 from typing import Iterable
 
 import wandb
-from wandb.env import _REQUIRE_LEGACY_SERVICE
 from wandb.errors import UnsupportedError
 from wandb.sdk import wandb_run
 
@@ -45,9 +43,6 @@ class _Requires:
         wandb.termwarn(
             "`wandb.require('core')` is redundant as it is now the default behavior."
         )
-
-    def require_legacy_service(self) -> None:
-        os.environ[_REQUIRE_LEGACY_SERVICE] = "true"
 
     def apply(self) -> None:
         """Call require_* method for supported features."""
